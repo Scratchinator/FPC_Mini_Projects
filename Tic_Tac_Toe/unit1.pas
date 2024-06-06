@@ -28,6 +28,7 @@ Type
   private
     gesperrt, Auswahl: Boolean;
     Procedure Check_for_Winner;
+
   public
 
   End;
@@ -47,9 +48,11 @@ Begin
   If TShape(Sender).shape = stRectangle Then Begin
     If Auswahl Then Begin
       TShape(Sender).Shape := stCircle;
+      TShape(Sender).Brush.color := clblue;
     End
     Else Begin
       TShape(Sender).Shape := stStar;
+      TShape(Sender).Brush.color := clred;
     End;
     Auswahl := Not Auswahl;
     Check_for_Winner;
@@ -60,7 +63,11 @@ Procedure TForm1.FormCreate(Sender: TObject);
 Begin
   Auswahl := false;
   gesperrt := false;
-  caption := 'Tic Tac To';
+  (*
+   * History: 0.01 = Initialversion
+   *          0.02 = Add Brush colors
+   *)
+  caption := 'Tic Tac Toe, ver 0.02';
 End;
 
 Procedure TForm1.Button1Click(Sender: TObject);
@@ -76,6 +83,16 @@ Begin
   Shape9.Shape := stRectangle;
   Auswahl := false;
   gesperrt := false;
+  Shape1.Brush.color := clwhite;
+  Shape2.Brush.color := clwhite;
+  Shape3.Brush.color := clwhite;
+  Shape4.Brush.color := clwhite;
+  Shape5.Brush.color := clwhite;
+  Shape6.Brush.color := clwhite;
+  Shape7.Brush.color := clwhite;
+  Shape8.Brush.color := clwhite;
+  Shape9.Brush.color := clwhite;
+
 End;
 
 Procedure TForm1.Check_for_Winner;
